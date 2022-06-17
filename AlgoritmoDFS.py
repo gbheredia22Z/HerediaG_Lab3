@@ -35,3 +35,35 @@ class Grafo:
 
         #Figurar el grafo mediante una lista de adyacencia 
         self.m_lista_adyacencia = {nodo: set() for nodo in self.m_nodos}#Implementación de lista de adyacencia mediante un diccionario
+
+            
+    def agregar_borde(self, nodo1, nodo2, peso=1):
+        """
+        Se agrega nodos a la lista de adyacencia recibiendo como parámetros : nodo1, nodo2 y el peso
+        Posteriormente los nodos son agregados a la lista de adyacencia, evaluando los parámetros:
+
+        nodo1: int
+        nodo2: int
+        peso: int
+
+        Retorno: Ningun valor de retorno
+        """
+        #Agregar nodo 2 a lista de adyacencia en nodo 1
+        self.m_lista_adyacencia[nodo1].add((nodo2, peso)) 
+        
+        #Si el nodo no es dirigido
+        if not self.m_dirigido:
+            # Agregar nodo 1 a lista de adyacencia en nodo2
+            self.m_lista_adyacencia[nodo2].add((nodo1, peso))
+            
+    def imprimir_lista_adyacente(self):
+        """
+        Se realiza la impresión del grafo de la lista de adyacencia sin recibir parámetros 
+
+        Parametros : Ningun parámetro
+        Retorno :  Ningun valor de retorno
+        """
+        #Lista de adyacencia recorrida
+        for llave in self.m_lista_adyacencia.keys():
+             # Impresión del nodo
+            print("nodo", llave, ": ", self.m_lista_adyacencia[llave])
