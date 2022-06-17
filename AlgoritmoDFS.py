@@ -68,7 +68,7 @@ class Grafo:
              # Impresión del nodo
             print("nodo", llave, ": ", self.m_lista_adyacencia[llave])
   
-    def dfs(self, inicio, objetivo, ruta = [], visitado = set()):
+    def dfs_transversal(self, inicio, objetivo, ruta = [], visitado = set()):
         """
         Este método imprime el recorrido dfs generado a través de un nodo inicial y un nodo objetivo.
         Genera una lista de los nodos visitados y muestra el recorrido realizado hasta llegar al objetivo. 
@@ -99,3 +99,54 @@ class Grafo:
         
         ruta.pop() # elimina y retorna el elemento de la ruta
         return None           
+if __name__ == "__main__":
+    """
+    En la clase Main la clase Grafo será instaciada de modo que podamos acceder a sus métodos.
+    A su vez se requiere de la implementción de 3 casos de estudio que permitirán verificar
+    el funcionamiento del programa.
+    """
+        
+    print(" Caso de Prueba 1")
+    grafo_casoprueba1 = Grafo(5, dirigido = True) # instancia de la clase Grafo
+    grafo_casoprueba1.agregar_borde(0, 1) # Agregar bordes al grafo con peso predeterminado = 1
+    grafo_casoprueba1.agregar_borde(0, 2) # Agregar bordes al grafo con peso predeterminado = 1
+    grafo_casoprueba1.agregar_borde(1, 2) # Agregar bordes al grafo con peso predeterminado = 1
+    grafo_casoprueba1.agregar_borde(1, 3) # Agregar bordes al grafo con peso predeterminado = 1
+    grafo_casoprueba1.agregar_borde(2, 4) # Agregar bordes al grafo con peso predeterminado = 1
+
+    grafo_casoprueba1.imprimir_lista_adyacente() #Se imprime la lista de adyacencia
+ 
+    print("A continuación se muestra el recorrido primero en anchura a partir del vértice 0)")
+    #Muestra la lista de colas visitadas y devuelve las colas visitadas
+    grafo_casoprueba1.dfs_transversal(0)
+    print()
+
+    print(" Caso de Prueba 2")
+    grafo_casoprueba2 = Grafo(4, dirigido = False) # instancia de la clase Grafo
+    grafo_casoprueba2.agregar_borde(1, 2) # Agregar bordes al grafo 
+    grafo_casoprueba2.agregar_borde(0, 3) # Agregar bordes al grafo 
+    grafo_casoprueba2.agregar_borde(2, 1) # Agregar bordes al grafo 
+    grafo_casoprueba2.agregar_borde(2, 3) # Agregar bordes al grafo 
+
+
+    grafo_casoprueba2.imprimir_lista_adyacente() #Se imprime la lista de adyacencia
+
+    print("A continuación se muestra el recorrido primero en anchura a partir del vértice 0)")
+    #Muestra la lista de colas visitadas y devuelve las colas visitadas
+    grafo_casoprueba2.dfs_transversal(0)
+    print()
+
+    print(" Caso de Prueba 3")
+    grafo_casoprueba3 = Grafo(4, dirigido = False) # instancia de la clase Grafo
+    grafo_casoprueba3.agregar_borde(1, 2) # Agregar bordes al grafo 
+    grafo_casoprueba3.agregar_borde(0, 2) # Agregar bordes al grafo 
+    grafo_casoprueba3.agregar_borde(0, 1) # Agregar bordes al grafo 
+    grafo_casoprueba3.agregar_borde(1, 3) # Agregar bordes al grafo 
+
+
+    grafo_casoprueba3.imprimir_lista_adyacente() ##Muestra la lista de adyacencia del nodo n: {(nodo, peso)}
+
+    print("A continuación se muestra el recorrido primero en anchura a partir del vértice 0)")
+    #Muestra la lista de colas visitadas y devuelve las colas visitadas
+    grafo_casoprueba3.dfs_transversal(0)
+    print()
